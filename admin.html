@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Brow &amp; Lash Bar Admin Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-body">
+  <main class="admin-shell">
+    <section class="admin-login" id="adminLogin">
+      <div class="admin-card">
+        <div class="admin-login-top">
+          <p class="eyebrow">Brow &amp; Lash Bar</p>
+          <div class="admin-language-tabs" role="tablist" aria-label="Admin language">
+            <button class="is-active" type="button" role="tab" aria-selected="true" data-admin-lang="ka">KA</button>
+            <button type="button" role="tab" aria-selected="false" data-admin-lang="en">EN</button>
+            <button type="button" role="tab" aria-selected="false" data-admin-lang="ru">RU</button>
+          </div>
+        </div>
+        <h1 data-admin-i18n="loginTitle">Admin</h1>
+        <p data-admin-i18n="loginText">Enter the admin password to edit live services, prices and images.</p>
+        <form id="passwordForm">
+          <label for="adminPassword" data-admin-i18n="passwordLabel">Password</label>
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Enter password"
+            data-admin-i18n-placeholder="passwordPlaceholder">
+          <button class="btn btn-primary" type="submit" data-admin-i18n="enterButton">Enter</button>
+          <span class="admin-error" id="adminError" aria-live="polite"></span>
+        </form>
+      </div>
+    </section>
+
+    <section class="admin-dashboard" id="adminDashboard" hidden>
+      <div class="admin-topbar">
+        <div>
+          <p class="eyebrow" data-admin-i18n="topEyebrow">Production admin</p>
+          <h1 data-admin-i18n="dashboardTitle">Brow &amp; Lash Bar content</h1>
+          <p data-admin-i18n="dashboardText">Supabase is connected. Saved KA, EN and RU services publish across all
+            devices.</p>
+        </div>
+        <a class="btn btn-secondary" href="index.html" data-admin-i18n="backButton">Back to website</a>
+      </div>
+
+      <div class="admin-grid">
+        <section class="admin-panel">
+          <div class="admin-panel__heading">
+            <div>
+              <h2 data-admin-i18n="servicesTitle">Services</h2>
+              <p data-admin-i18n="servicesText">Edit one language at a time. Price and image stay shared.</p>
+            </div>
+            <div class="admin-language-tabs" role="tablist" aria-label="Service editor language">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-admin-lang="ka">KA</button>
+              <button type="button" role="tab" aria-selected="false" data-admin-lang="en">EN</button>
+              <button type="button" role="tab" aria-selected="false" data-admin-lang="ru">RU</button>
+            </div>
+          </div>
+          <div id="serviceEditor" class="editor-list"></div>
+        </section>
+
+        <section class="admin-panel">
+          <h2 data-admin-i18n="galleryTitle">Gallery Images</h2>
+          <div id="galleryEditor" class="editor-list"></div>
+        </section>
+      </div>
+
+      <section class="admin-panel export-panel">
+        <div>
+          <h2 data-admin-i18n="saveTitle">Save content</h2>
+          <p data-admin-i18n="saveText">Save publishes live content to Supabase. A local backup is kept only as a
+            fallback.</p>
+        </div>
+        <div class="admin-actions">
+          <button class="btn btn-primary" type="button" id="saveContent" data-admin-i18n="saveButton">Save
+            changes</button>
+          <button class="btn btn-secondary" type="button" id="resetContent" data-admin-i18n="resetButton">Reset to
+            default</button>
+          <button class="btn btn-secondary" type="button" id="exportContent" data-admin-i18n="exportButton">Export JSON
+            backup</button>
+        </div>
+        <p class="admin-status" id="adminStatus" aria-live="polite"></p>
+        <textarea id="exportOutput" readonly placeholder="Optional JSON backup will appear here."
+          data-admin-i18n-placeholder="exportPlaceholder"></textarea>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js" defer></script>
+</body>
+
+</html>
